@@ -1,26 +1,27 @@
-
 //------------- handle search button-----------
 const searchBook = () => {
-  const searchField = document.getElementById("search-field");
+  const searchField = document.getElementById("search-input");
   const searchText = searchField.value;
 
   // ----------load data----------
   const url = `https://openlibrary.org/search.json?q=${searchText}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displaySearchResult(data.docs));
+    .then((data) => {
+      console.log(data);
+      displaySearchResult(data.docs);
+    });
 };
 
 // ----------display search result data----------
 const displaySearchResult = (myBooks) => {
-  const searchResult = document.getElementById("search-result");
-  searchResult.innerText = "";
+  const searchResult = document.getElementById("search-data");
+  // searchResult.innerText = "";
 
-
-  const books = myBooks.docs;
+  const books = myBooks;
   books.forEach((book) => {
     console.log(book);
-    const div = document.innerHTML("div");
+    const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
         <div class="card">
