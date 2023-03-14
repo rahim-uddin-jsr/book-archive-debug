@@ -1,14 +1,25 @@
+//handle spinner
+function loadingSpinner(isLoading) {
+  if (isLoading) {
+    document.getElementById("loader").classList.remove("d-none");
+  } else {
+    document.getElementById("loader").classList.add("d-none");
+  }
+}
+
 //------------- handle search button-----------
 const searchResult = document.getElementById("search-data");
 const resultFound = document.getElementById("found-result-filed");
 const emptySearchError = document.getElementById("empty-search-error");
+const searchField = document.getElementById("search-input");
 const searchBook = () => {
-  const searchField = document.getElementById("search-input");
+  loadingSpinner(true);
   searchResult.textContent = "";
   const searchText = searchField.value;
   if (searchText == "") {
     resultFound.classList.add("d-none");
     emptySearchError.classList.remove("d-none");
+    loadingSpinner(false);
     return;
   }
   emptySearchError.classList.add("d-none");
@@ -19,6 +30,10 @@ const searchBook = () => {
     .then((data) => {
       console.log(data);
       displaySearchResult(data.docs);
+    })
+    .catch((err) => {
+      loadingSpinner(false);
+      alert("something went wrong");
     });
 };
 // searchBook();
@@ -44,6 +59,8 @@ const displaySearchResult = (myBooks) => {
             </div>
         </div>
         `;
+    loadingSpinner(false);
+    searchField.value = "";
     searchResult.appendChild(div);
   });
 };
