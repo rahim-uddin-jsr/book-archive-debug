@@ -1,4 +1,15 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+}
+.card {
+  height: 500px;
+  padding: 10px;
+}
+.card-image {
+  height: 300px;
+  background-image: url("https://imgs.search.brave.com/2mwmQAfSsXvTx6TcpvUrx_os8X4Db0ZFwAiVbSwZ6nI/rs:fit:474:266:1/g:ce/aHR0cHM6Ly93d3cu/c2Fsb25sZmMuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE4/LzAxL2ltYWdlLW5v/dC1mb3VuZC0xLXNj/YWxlZC0xMTUweDY0/Ny5wbmc");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }

@@ -15,9 +15,10 @@
   <header class="w-50 mx-auto mt-5">
       <h1 class="text-center text-success">Search Your Favorite Books </h1>
       <div class="input-group mt-3 my-0 ">
-        <input id="search-input" value="fish" type="text" class="form-control" placeholder="search the book you want to read" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <input id="search-input"  type="text" class="form-control" placeholder="search the book you want to read" aria-label="Recipient's username" aria-describedby="button-addon2">
         <button  class="btn btn-outline-success" type="button" onclick="searchBook()" id="search">Search</button>
       </div>
+      <h6 id="empty-search-error" class="mb-5 d-none text-warning">Please search something valid</h6>
       <h6 id="found-result-filed" class="mb-5 d-none text-primary">Total Found <span id="result-count">0</span> </h6>
     </header>
 

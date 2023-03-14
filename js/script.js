@@ -1,9 +1,17 @@
 //------------- handle search button-----------
-
+const searchResult = document.getElementById("search-data");
+const resultFound = document.getElementById("found-result-filed");
+const emptySearchError = document.getElementById("empty-search-error");
 const searchBook = () => {
   const searchField = document.getElementById("search-input");
+  searchResult.textContent = "";
   const searchText = searchField.value;
-
+  if (searchText == "") {
+    resultFound.classList.add("d-none");
+    emptySearchError.classList.remove("d-none");
+    return;
+  }
+  emptySearchError.classList.add("d-none");
   // ----------load data----------
   const url = `https://openlibrary.org/search.json?q=${searchText}`;
   fetch(url)
@@ -13,13 +21,12 @@ const searchBook = () => {
       displaySearchResult(data.docs);
     });
 };
-searchBook();
+// searchBook();
 // ----------display search result data----------
 const displaySearchResult = (myBooks) => {
   document.getElementById("result-count").innerText = myBooks.length;
-  document.getElementById("found-result-filed").classList.remove("d-none");
-  const searchResult = document.getElementById("search-data");
-  // searchResult.innerText = "";
+  resultFound.classList.remove("d-none");
+  // searchResult.textContent = "";
 
   const books = myBooks.slice(0, 15);
   books.forEach((book) => {
@@ -28,7 +35,7 @@ const displaySearchResult = (myBooks) => {
     div.classList.add("col");
     div.innerHTML = `
         <div class="card">
-            <img src=" https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg" class="card-img-top w-50 mx-auto" alt="...">
+            <img src="https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg" class="card-img-top card-image w-50 mx-auto img-thumbnail" alt="...">
             <div class="card-body text-center">
               <h5 class="card-title"> Name: ${book?.title}</h5>
               <h6> Author: ${book?.author_name}</h6>
